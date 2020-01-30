@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Gamer\\source\\repos\\Lab2\\Lab2\\Lab2.csproj": {}
+    "C:\\Users\\Gamer\\Documents\\UVU-CS-3260\\Lab2\\Lab2\\Lab2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Gamer\\source\\repos\\Lab2\\Lab2\\Lab2.csproj": {
+    "C:\\Users\\Gamer\\Documents\\UVU-CS-3260\\Lab2\\Lab2\\Lab2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Gamer\\source\\repos\\Lab2\\Lab2\\Lab2.csproj",
+        "projectUniqueName": "C:\\Users\\Gamer\\Documents\\UVU-CS-3260\\Lab2\\Lab2\\Lab2.csproj",
         "projectName": "Lab2",
-        "projectPath": "C:\\Users\\Gamer\\source\\repos\\Lab2\\Lab2\\Lab2.csproj",
+        "projectPath": "C:\\Users\\Gamer\\Documents\\UVU-CS-3260\\Lab2\\Lab2\\Lab2.csproj",
         "packagesPath": "C:\\Users\\Gamer\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Gamer\\source\\repos\\Lab2\\Lab2\\obj\\",
+        "outputPath": "C:\\Users\\Gamer\\Documents\\UVU-CS-3260\\Lab2\\Lab2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Gamer\\AppData\\Roaming\\NuGet\\NuGet.Config",

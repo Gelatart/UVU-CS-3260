@@ -32,6 +32,7 @@ public class Program
         Console.WriteLine($"double Max: {double.MaxValue}  MinValue: {double.MinValue}");
         Console.WriteLine($"decimal Max: {decimal.MaxValue}  MinValue: {decimal.MinValue}");
         Console.WriteLine($"char Max: {Convert.ToInt32(char.MaxValue)}  MinValue: {Convert.ToInt32(char.MinValue)}");
+        Console.WriteLine("bool Max: True Zero: False MinValue: False");
         Console.ReadLine();
     }
 } 
