@@ -49,6 +49,7 @@
     <Compile Include="BusinessRules.cs" />
     <Compile Include="Contract.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="empType.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
