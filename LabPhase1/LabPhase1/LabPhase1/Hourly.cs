@@ -14,6 +14,17 @@ namespace LabPhase1
         public Hourly()
         {
             //why no arrow underneath?
+            type = "Hourly";
+        }
+        public Hourly(id, firstN, lastN, fullN, rate, worked) 
+        {
+            type = "Hourly";
+            empId = id;
+            firstName = firstN;
+            lastName = lastN;
+            fullName = fullN;
+            hourlyRate = rate;
+            hoursWorked = worked;
         }
     }
    //method called hourly?
