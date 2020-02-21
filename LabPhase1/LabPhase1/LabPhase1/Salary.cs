@@ -13,6 +13,15 @@ namespace LabPhase1
         public Salary()
         {
             //why no arrow underneath?
+            type = "Salary";
+        }
+        public Salary(id, firstN, lastN, fullN, monthly) {
+            type = "Salary";
+            empId = id;
+            firstName = firstN;
+            lastName = lastN;
+            fullName = fullN;
+            monthlySalary = monthly;
         }
     }
 }
