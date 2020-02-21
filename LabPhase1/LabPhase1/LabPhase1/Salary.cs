@@ -13,10 +13,10 @@ namespace LabPhase1
         public Salary()
         {
             //why no arrow underneath?
-            type = "Salary";
+            empType = "Salary";
         }
-        public Salary(id, firstN, lastN, fullN, monthly) {
-            type = "Salary";
+        public Salary(string id, string firstN, string lastN, string fullN, double monthly) {
+            empType = "Salary";
             empId = id;
             firstName = firstN;
             lastName = lastN;

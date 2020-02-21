@@ -9,7 +9,7 @@ namespace LabPhase1
     public class BusinessRules
     {
         private static BusinessRules _instance;
-        public SortedDictionary<string, Employee> employeeList = new SortedDictionary<string, Employee>();
+        public static SortedDictionary<string, Employee> employeeList = new SortedDictionary<string, Employee>();
         //fields for empData and lazy?
         //methods for AddEmployee and UpdateEmployee?
         public static BusinessRules Instance
@@ -30,24 +30,37 @@ namespace LabPhase1
 
         }
         
-        public void AddEmployee(Employee emp) {
+        public static void AddEmployee(Employee emp) {
             //handle null references without errors!
             //simple employee ID, generated from input?
             //indexer to iterate through sortedDict
             //Your driver program (main) needs to populate the directory and then to read from it and display the data.  
             //You create test employees for this.
             //Do not implement any indexing or additional functionality in the Employee Classes
-            string id = emp.empId;
-            employeeList.add(id,emp);
+            string id;
+            if (emp == null)
+            {
+                id = "BLANK";
+            } else
+            {
+                id = emp.empId;
+            }      
+            employeeList.Add(id,emp);
+            //Form1.listView1.Items.Add(emp.fullName);
+            Employee.empCounter++;
         }
-        
-        public void UpdateEmployee(Employee emp) {
+
+        public static void UpdateEmployee(Employee emp)
+        {
             foreach (KeyValuePair<string, Employee> worker in employeeList) {
-                if(emp.empId == worker.value.empId) {
-                    worker.value = emp;
+                if(emp.empId == worker.Value.empId) {
+                    //sortedDictionary[key] = newValue;
+                    employeeList[worker.Value.empId] = emp;
                     break;
                 }
             }
+            //^No longer sorting and updating, just updating whatever entry selected
+
         }
         //private int Id { get; set; } = 378591546;
         //private string Insured { get; set; } = "Mike Fillmore";

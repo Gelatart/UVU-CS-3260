@@ -14,11 +14,11 @@ namespace LabPhase1
         public Hourly()
         {
             //why no arrow underneath?
-            type = "Hourly";
+            empType = "Hourly";
         }
-        public Hourly(id, firstN, lastN, fullN, rate, worked) 
+        public Hourly(string id, string firstN, string lastN, string fullN, double rate, double worked) 
         {
-            type = "Hourly";
+            empType = "Hourly";
             empId = id;
             firstName = firstN;
             lastName = lastN;

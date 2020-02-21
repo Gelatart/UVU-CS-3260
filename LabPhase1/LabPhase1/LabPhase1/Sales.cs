@@ -14,6 +14,18 @@ namespace LabPhase1
         public Sales()
         {
             //why no arrow underneath?
+            empType = "Sales";
+        }
+        public Sales(string id, string firstN, string lastN, string fullN, double monthly, double comm, double gross)
+        {
+            empType = "Sales";
+            empId = id;
+            firstName = firstN;
+            lastName = lastN;
+            fullName = fullN;
+            monthlySalary = monthly;
+            commission = comm;
+            grossSales = gross;
         }
     }
 }

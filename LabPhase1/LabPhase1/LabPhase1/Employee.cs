@@ -17,9 +17,22 @@ namespace LabPhase1
         public string firstName { get; set; }
         public string fullName { get; set; }
         public string lastName { get; set; }
+        internal static int empCounter;
         public Employee()
         {
-
+            empType = "";
+            empId = "";
+            firstName = "";
+            lastName = "";
+            fullName = "";
+        }
+        public Employee(string id, string type, string firstN, string lastN, string fullN)
+        {
+            empType = type;
+            empId = id;
+            firstName = firstN;
+            lastName = lastN;
+            fullName = fullN;
         }
     }
     //employee function?
