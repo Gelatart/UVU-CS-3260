@@ -16,12 +16,17 @@ namespace LabPhase1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Form1 form1 = new Form1();
             Hourly temp = new Hourly("AA5", "Cheryl", "Kirk", "Cheryl Kirk", 3.98, 4);
-            BusinessRules.AddEmployee(temp);
+            BusinessRules.AddEmployee(form1, temp);
             Contract hey = new Contract("L-1337", "John", "Chief", "John Chief", 5);
-            BusinessRules.AddEmployee(hey);
-            BusinessRules.AddEmployee(null);           
+            BusinessRules.AddEmployee(form1, hey);
+            Salary sup = new Salary("HAMBURGER", "Phil", "Hartman", "Phil Hartman", 7.896);
+            BusinessRules.AddEmployee(form1, sup);
+            Sales bro = new Sales("EMPLOYEE_ID", "David", "Lynch", "David Lynch", 4, 5.86, 387);
+            BusinessRules.AddEmployee(form1, bro);
+            BusinessRules.AddEmployee(form1, null);
+            Application.Run(form1);
         }
     }
 }

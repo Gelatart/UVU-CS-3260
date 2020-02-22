@@ -10,10 +10,8 @@ namespace LabPhase1
     {
         public double hourlyRate { get; set; }
         public double hoursWorked { get; set; }
-        //method for salary? +1 overl...?
         public Hourly()
         {
-            //why no arrow underneath?
             empType = "Hourly";
         }
         public Hourly(string id, string firstN, string lastN, string fullN, double rate, double worked) 
@@ -27,5 +25,4 @@ namespace LabPhase1
             hoursWorked = worked;
         }
     }
-   //method called hourly?
 }
