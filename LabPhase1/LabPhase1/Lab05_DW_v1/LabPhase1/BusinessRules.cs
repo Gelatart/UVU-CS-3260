@@ -98,18 +98,10 @@ namespace LabPhase1
         public static void UpdateEmployee(Employee emp)
         {
             foreach (KeyValuePair<string, Employee> worker in employeeList) {
-                try
-                {
-                    if (emp.empId == worker.Value.empId)
-                    {
-                        employeeList[worker.Value.empId] = emp;
-                        break;
-                    }
-                } catch (NullReferenceException)
-                {
-
+                if(emp.empId == worker.Value.empId) {
+                    employeeList[worker.Value.empId] = emp;
+                    break;
                 }
-                
             }
 
         }

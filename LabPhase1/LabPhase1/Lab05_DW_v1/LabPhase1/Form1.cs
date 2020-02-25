@@ -2,7 +2,7 @@
 /// Name: Daniel Wood
 /// CS3260 Section 001
 /// Project: Lab_Phase_1
-/// Date: 2/21/2020 11:34:50 PM
+/// Date: 2/21/2020 10:23:25 PM
 /// <summary>
 /// Form where users can add employees/null references, and update existing entries
 /// </summary>
@@ -407,7 +407,6 @@ namespace LabPhase1
                         try
                         {
                             BusinessRules.UpdateEmployee(newEmp);
-                            listView1.SelectedItems[0].Text = newEmp.fullName;
                             errorProvider1.SetError(labelError, null);
                         }
                         catch (NullReferenceException)
