@@ -445,11 +445,11 @@ namespace LabPhase02
                 {
                     try
                     {
-                        listView1.Items.Add(worker.Value.fullName);
-                        //BusinessRules.AddEmployee(this, worker.Value);
+                        //listView1.Items.Add(worker.Value.fullName);
+                        BusinessRules.AddEmployee(this, worker.Value);
                     } catch (NullReferenceException)
                     {
-                        //BusinessRules.AddEmployee(this, null);
+                        BusinessRules.AddEmployee(this, null);
                         continue;
                     }
                     

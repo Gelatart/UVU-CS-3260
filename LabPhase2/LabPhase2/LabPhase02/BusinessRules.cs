@@ -92,7 +92,8 @@ namespace LabPhase02
             {
                 id = emp.empId;
             }      
-            employeeList.Add(id,emp);
+            employeeList.Add(id,emp); //argumentexception id already added
+            //try if exception make new id for it and try again
             Employee.empCounter++;
             form1.populateItem(id);
             return id;
