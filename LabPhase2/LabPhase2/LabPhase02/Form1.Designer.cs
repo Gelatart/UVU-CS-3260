@@ -1,4 +1,4 @@
-﻿namespace LabPhase1
+﻿namespace LabPhase02
 {
     partial class Form1
     {
@@ -49,6 +49,10 @@
             this.button2 = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.labelError = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +73,7 @@
             this.listView1.Location = new System.Drawing.Point(25, 79);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(107, 359);
+            this.listView1.Size = new System.Drawing.Size(100, 225);
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
@@ -234,11 +238,57 @@
             this.labelError.TabIndex = 18;
             this.labelError.Text = "Error Indicator";
             // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(18, 368);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(133, 22);
+            this.textBox7.TabIndex = 19;
+            //this.textBox7.AutoPostBack = true;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "ID",
+            "First Name",
+            "Last Name",
+            "Full Name"});
+            this.comboBox2.Location = new System.Drawing.Point(18, 336);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(133, 24);
+            this.comboBox2.TabIndex = 20;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.Crimson;
+            this.label9.Location = new System.Drawing.Point(22, 393);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(91, 17);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "No Employees Found";
+            this.label9.Visible = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(22, 316);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(132, 17);
+            this.label10.TabIndex = 22;
+            this.label10.Text = "Select Search Type";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.textBox7);
             this.Controls.Add(this.labelError);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox6);
@@ -260,7 +310,6 @@
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Employee Directory";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -289,6 +338,10 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label labelError;
         public System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Label label9;
+        public System.Windows.Forms.ComboBox comboBox2;
+        public System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label label10;
     }
 }
 

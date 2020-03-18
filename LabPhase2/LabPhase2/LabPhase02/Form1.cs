@@ -23,7 +23,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LabPhase1
+namespace LabPhase02
 {
     public partial class Form1 : Form
     {
@@ -37,7 +37,8 @@ namespace LabPhase1
             {
                 listView1.Items.Add(worker.Value.fullName);
             }
-                
+            this.textBox7.TextChanged += new EventHandler(this.textBox7_TextChanged);
+
         }
 
         /// <summary>
@@ -87,10 +88,11 @@ namespace LabPhase1
         /// Creates a new employee object from data that has been entered into the forms
         /// </summary>
         /// <returns>Returns the employee object or a null reference</returns>
-        
-        public Employee createEmployee() {
+
+        public Employee createEmployee()
+        {
             bool ifBegin = validateText();
-            if(ifBegin)
+            if (ifBegin)
             {
                 Employee emp;
                 string firstN = textBox1.Text;
@@ -142,12 +144,13 @@ namespace LabPhase1
                 }
                 Employee.empCounter++;
                 return null;
-            } else
+            }
+            else
             {
                 Employee.empCounter++;
                 return null;
             }
-            
+
         }
 
         /// <summary>
@@ -201,7 +204,8 @@ namespace LabPhase1
                 label8.Visible = false;
                 label6.Text = "Hourly Rate";
                 label7.Text = "Hours Worked";
-            } else if (selectedItem.ToString() == "Salary")
+            }
+            else if (selectedItem.ToString() == "Salary")
             {
                 textBox4.Visible = true;
                 label6.Visible = true;
@@ -210,7 +214,8 @@ namespace LabPhase1
                 textBox6.Visible = false;
                 label8.Visible = false;
                 label6.Text = "Monthly Salary";
-            } else if (selectedItem.ToString() == "Sales")
+            }
+            else if (selectedItem.ToString() == "Sales")
             {
                 textBox4.Visible = true;
                 label6.Visible = true;
@@ -221,7 +226,8 @@ namespace LabPhase1
                 label6.Text = "Monthly Salary";
                 label7.Text = "Commission";
                 label8.Text = "Gross Sales";
-            } else if (selectedItem.ToString() == "Contract")
+            }
+            else if (selectedItem.ToString() == "Contract")
             {
                 textBox4.Visible = true;
                 label6.Visible = true;
@@ -243,7 +249,7 @@ namespace LabPhase1
             errorProvider1.SetError(labelError, null);
             if (listView1.SelectedItems.Count == 0)
                 return;
-            if(listView1.SelectedItems[0].Text.Contains("BLANK"))
+            if (listView1.SelectedItems[0].Text.Contains("BLANK"))
             {
                 textBox1.Text = "NULL";
                 textBox2.Text = "NULL";
@@ -258,7 +264,8 @@ namespace LabPhase1
                 textBox6.Visible = false;
                 label8.Visible = false;
                 comboBox1.SelectedIndex = -1;
-            } else
+            }
+            else
             {
                 foreach (KeyValuePair<string, Employee> worker in BusinessRules.employeeList)
                 {
@@ -323,12 +330,12 @@ namespace LabPhase1
                             }
                         }
                     }
-                    catch(NullReferenceException)
+                    catch (NullReferenceException)
                     {
                         continue;
                     }
                 }
-            }          
+            }
         }
 
         /// <summary>
@@ -418,22 +425,95 @@ namespace LabPhase1
                     else
                     {
                         Employee newEmp = createEmployee();
-                        string id = BusinessRules.AddEmployee(this,newEmp);
-                        
+                        string id = BusinessRules.AddEmployee(this, newEmp);
+
                         int i = listView1.Items.Count - 1;
                         listView1.Items[i].Selected = true;
                     }
                 }
             }
-            
-            
+
+
         }
-
-        
-
-        private void Form1_Load(object sender, EventArgs e)
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+            if(String.IsNullOrEmpty(textBox7.Text))
+            {
+                listView1.Clear();
+                label9.Visible = false;
+                foreach (KeyValuePair<string, Employee> worker in BusinessRules.employeeList)
+                {
+                    try
+                    {
+                        listView1.Items.Add(worker.Value.fullName);
+                        //BusinessRules.AddEmployee(this, worker.Value);
+                    } catch (NullReferenceException)
+                    {
+                        //BusinessRules.AddEmployee(this, null);
+                        continue;
+                    }
+                    
+                }
+            } else
+            {
+                searchEmployees();
+            }
+        }
+        private void textBox7_KeyPress(object sender, KeyPressEventArgs e)
         {
 
+        }
+        public ListView searchEmployees()
+        {
+
+            Object selectedItem = comboBox2.SelectedItem;
+            if (selectedItem == null)
+            {
+                label9.Text = "Need to set type!";
+                label9.Visible = true;
+            }
+            else if (selectedItem.ToString() == "ID")
+            {
+                
+                List<Employee> temp = BusinessRules.SearchEmployeeID(textBox7.Text);
+                updateList(temp);
+
+
+            }
+            else if (selectedItem.ToString() == "First Name")
+            {
+                List<Employee> temp = BusinessRules.SearchEmployeeFirst(textBox7.Text);
+                updateList(temp);
+            }
+            else if (selectedItem.ToString() == "Last Name")
+            {
+                List<Employee> temp = BusinessRules.SearchEmployeeLast(textBox7.Text);
+                updateList(temp);
+            }
+            else if (selectedItem.ToString() == "Full Name")
+            {
+                List<Employee> temp = BusinessRules.SearchEmployeeFull(textBox7.Text);
+                updateList(temp);
+            }
+            return listView1;
+        }
+        public void updateList(List<Employee> temp)
+        {
+            //refactored from previous duplication into its own method
+            listView1.Clear();
+            if (temp.Count == 0)
+            {
+                label9.Text = "No Employees Found";
+                label9.Visible = true;
+            }
+            else
+            {
+                label9.Visible = false;
+                foreach (Employee worker in temp)
+                {
+                    listView1.Items.Add(worker.fullName);
+                }
+            }
         }
     }
 }
