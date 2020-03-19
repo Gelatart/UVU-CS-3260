@@ -51,19 +51,9 @@ namespace LabPhase02
         {
 
         }
-        /// <summary>
-        /// Adds employees or null references to the directory
-        /// </summary>
-        /// <param name="form1">The Form1 that controls the Windows Form where the ViewList will be populated</param>
-        /// <param name="emp">Employee passed in that is being added to the directory</param>
-        /// <returns></returns>
         
-        public static string AddEmployee(Form1 form1, Employee emp) {
-            //indexer to iterate through sortedDict
-            string id;
-            if (emp == null)
-            {
-                id = "BLANK-";
+        public string findNullID() {
+                string id = "BLANK-";
                 Random random = new Random();
                 int randomNumber = random.Next(0, 1000);
                 id = id + randomNumber;
@@ -88,14 +78,36 @@ namespace LabPhase02
                         isUnique = true;
                     }
                 }
+                return id;
+        }
+        
+        /// <summary>
+        /// Adds employees or null references to the directory
+        /// </summary>
+        /// <param name="form1">The Form1 that controls the Windows Form where the ViewList will be populated</param>
+        /// <param name="emp">Employee passed in that is being added to the directory</param>
+        /// <returns></returns>
+        
+        public static string AddEmployee(Form1 form1, Employee emp) {
+            //indexer to iterate through sortedDict
+            string id;
+            if (emp == null)
+            {
+                id = findNullID();
             } else
             {
                 id = emp.empId;
-            }      
-            employeeList.Add(id,emp); //argumentexception id already added
-            //try if exception make new id for it and try again
-            Employee.empCounter++;
-            form1.populateItem(id);
+            }
+            try {
+                employeeList.Add(id,emp); //argumentexception id already added
+                //try if exception make new id for it and try again
+                Employee.empCounter++;
+                form1.populateItem(id);
+            }
+            catch (ArgumentException) {
+                
+            }
+            
             return id;
         }
 
