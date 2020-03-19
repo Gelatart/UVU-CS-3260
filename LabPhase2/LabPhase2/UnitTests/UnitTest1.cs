@@ -21,11 +21,12 @@ using System.Windows.Forms;
 
 namespace UnitTests
 {
-    ///SUMMARY!
-    
     [TestClass]
     public class UnitTest1
     {
+        /// <summary>
+        /// A Red Test for testing the Salary class
+        /// </summary>
         [TestMethod]
         public void RedSalaryTestMethod()
         {
@@ -36,16 +37,14 @@ namespace UnitTests
             string fullName = "";
             double monthly = 1;
             Salary emp = new Salary(empId, firstName, lastName, fullName, monthly);
-
             //Act
             string fullN = emp.fullName;
-
             //Assert
             Assert.AreEqual("Steven Bishop", fullN);
         }
-        
-        ///SUMMARY!
-        
+        /// <summary>
+        /// A Green Test for testing the Salary class
+        /// </summary>
         [TestMethod]
         public void GreenSalaryTestMethod()
         {
@@ -56,16 +55,14 @@ namespace UnitTests
             string fullName = "Steven Bishop";
             double monthly = 1;
             Salary emp = new Salary(empId, firstName, lastName, fullName, monthly);
-
             //Act
             string fullN = emp.fullName;
-
             //Assert
             Assert.AreEqual("Steven Bishop", fullN);
         }
-        
-        ///SUMMARY!
-        
+        /// <summary>
+        /// A Red Test for testing the Contract class
+        /// </summary>
         [TestMethod]
         public void RedContractTestMethod()
         {
@@ -76,16 +73,14 @@ namespace UnitTests
             string fullName = "";
             double wage = 1;
             Contract emp = new Contract(empId, firstName, lastName, fullName, wage);
-
             //Act
             string fullN = emp.fullName;
-
             //Assert
             Assert.AreEqual("Richard Wilson", fullN);
         }
-        
-        ///SUMMARY!
-        
+        /// <summary>
+        /// A Green Test for testing the Contract class
+        /// </summary>
         [TestMethod]
         public void GreenContractTestMethod()
         {
@@ -96,63 +91,121 @@ namespace UnitTests
             string fullName = "Richard Wilson";
             double wage = 1;
             Contract emp = new Contract(empId, firstName, lastName, fullName, wage);
-
             //Act
             string fullN = emp.fullName;
-
             //Assert
             Assert.AreEqual("Richard Wilson", fullN);
         }
+        /// <summary>
+        /// A Red Test for testing the Hourly class
+        /// </summary>
         [TestMethod]
-        public void HourlyTestMethod()
+        public void RedHourlyTestMethod()
         {
             //Arrange
             string empId = "";
             string firstName = "";
             string lastName = "";
-            //string fullName = "";
-            string fullName = "Steven Bishop";
+            string fullName = "";
             double rate = 1;
             double worked = 1;
             Hourly emp = new Hourly(empId, firstName, lastName, fullName, rate, worked);
-
             //Act
             string fullN = emp.fullName;
-
             //Assert
-            Assert.AreEqual("Steven Bishop", fullN);
+            Assert.AreEqual("Kevin Urquhart", fullN);
         }
         /// <summary>
-        /// 
+        /// A Green Test for testing the Hourly class
         /// </summary>
         [TestMethod]
-        public void SalesTestMethod()
+        public void GreenHourlyTestMethod()
         {
             //Arrange
             string empId = "";
             string firstName = "";
             string lastName = "";
-            //string fullName = "";
-            string fullName = "Steven Bishop";
+            string fullName = "Kevin Urquhart";
+            double rate = 1;
+            double worked = 1;
+            Hourly emp = new Hourly(empId, firstName, lastName, fullName, rate, worked);
+            //Act
+            string fullN = emp.fullName;
+            //Assert
+            Assert.AreEqual("Kevin Urquhart", fullN);
+        }
+        /// <summary>
+        /// A Red Test for testing the Sales class
+        /// </summary>
+        [TestMethod]
+        public void RedSalesTestMethod()
+        {
+            //Arrange
+            string empId = "";
+            string firstName = "";
+            string lastName = "";
+            string fullName = "";
             double monthly = 1;
             double comm = 1;
             double gross = 1;
             Sales emp = new Sales(empId, firstName, lastName, fullName, monthly, comm, gross);
-
             //Act
             string fullN = emp.fullName;
-
             //Assert
-            Assert.AreEqual("Steven Bishop", fullN);
+            Assert.AreEqual("Brian Tsao", fullN);
         }
-
+        /// <summary>
+        /// A Green Test for testing the Sales class
+        /// </summary>
         [TestMethod]
-        public void BusinessTestMethod()
+        public void GreenSalesTestMethod()
+        {
+            //Arrange
+            string empId = "";
+            string firstName = "";
+            string lastName = "";
+            string fullName = "Brian Tsao";
+            double monthly = 1;
+            double comm = 1;
+            double gross = 1;
+            Sales emp = new Sales(empId, firstName, lastName, fullName, monthly, comm, gross);
+            //Act
+            string fullN = emp.fullName;
+            //Assert
+            Assert.AreEqual("Brian Tsao", fullN);
+        }
+        /// <summary>
+        /// A Red Test for testing the BusinessRules class's employeeList
+        /// </summary>
+        [TestMethod]
+        public void RedBusinessTestMethod()
         {
             //Arrange
             Form1 form1 = new Form1();
             string empId = "101";
             //string tempId = "343";
+            string firstName = "";
+            string lastName = "";
+            string fullName = "";
+            double monthly = 1;
+            Salary emp = new Salary(empId, firstName, lastName, fullName, monthly);
+            //Salary temp = new Salary(tempId, firstName, lastName, fullName, monthly);
+            BusinessRules.employeeList.Clear();
+            //Act
+            BusinessRules.AddEmployee(form1, emp);
+            //Assert
+            Employee empRep = BusinessRules.employeeList[empId];
+            Assert.AreEqual(empRep.empId, "343");
+        }
+        /// <summary>
+        /// A Green Test for testing the BusinessRules class's employeeList
+        /// </summary>
+        [TestMethod]
+        public void GreenBusinessTestMethod()
+        {
+            //Arrange
+            Form1 form1 = new Form1();
+            string empId = "101";
             string tempId = empId;
             string firstName = "";
             string lastName = "";
@@ -161,117 +214,177 @@ namespace UnitTests
             Salary emp = new Salary(empId, firstName, lastName, fullName, monthly);
             Salary temp = new Salary(tempId, firstName, lastName, fullName, monthly);
             BusinessRules.employeeList.Clear();
-
-
-
-
             //Act
             BusinessRules.AddEmployee(form1, emp);
-       
-
             //Assert
             Employee empRep = BusinessRules.employeeList[empId];
             Assert.AreEqual(empRep.empId, temp.empId);
-
         }
+        /// <summary>
+        /// A Red Test for testing the search by ID method
+        /// </summary>
         [TestMethod]
-        public void SearchIDTestMethod()
+        public void RedSearchIDTestMethod()
         {
-
             //Arrange
             string empId = "301";
             string firstName = "";
             string lastName = "";
-            //string fullName = "";
-            string fullName = "George Lucas";
+            string fullName = "";
             double monthly = 1;
             Salary emp = new Salary(empId, firstName, lastName, fullName, monthly);
             Form1 form1 = new Form1();
             BusinessRules.employeeList.Clear();
-
-
-
             //Act
             BusinessRules.AddEmployee(form1, emp);
             List<Employee> temp = BusinessRules.SearchEmployeeID(empId);
-
-
             //Assert
-            //Assert.AreEqual("Steven Bishop", fullN);
+            Assert.AreEqual(temp[0].empId, "801");
+        }
+        /// <summary>
+        /// A Green Test for testing the search by ID method
+        /// </summary>
+        [TestMethod]
+        public void GreenSearchIDTestMethod()
+        {
+            //Arrange
+            string empId = "301";
+            string firstName = "";
+            string lastName = "";
+            string fullName = "";
+            double monthly = 1;
+            Salary emp = new Salary(empId, firstName, lastName, fullName, monthly);
+            Form1 form1 = new Form1();
+            BusinessRules.employeeList.Clear();
+            //Act
+            BusinessRules.AddEmployee(form1, emp);
+            List<Employee> temp = BusinessRules.SearchEmployeeID(empId);
+            //Assert
             Assert.AreEqual(temp[0].empId, emp.empId);
         }
+        /// <summary>
+        /// A Red Test for testing the search by First Name method
+        /// </summary>
         [TestMethod]
-        public void SearchFirstTestMethod()
+        public void RedSearchFirstTestMethod()
         {
-
             //Arrange
             string empId = "301";
             string firstName = "George";
             string lastName = "";
-            //string fullName = "";
             string fullName = "";
             double monthly = 1;
             Salary emp = new Salary(empId, firstName, lastName, fullName, monthly);
             Form1 form1 = new Form1();
             BusinessRules.employeeList.Clear();
-
-
-
             //Act
             BusinessRules.AddEmployee(form1, emp);
             List<Employee> temp = BusinessRules.SearchEmployeeFirst(firstName);
-
-
+            //Assert
+            Assert.AreEqual(temp[0].firstName, "Robert");
+        }
+        /// <summary>
+        /// A Green Test for testing the search by First Name method
+        /// </summary>
+        [TestMethod]
+        public void GreenSearchFirstTestMethod()
+        {
+            //Arrange
+            string empId = "301";
+            string firstName = "George";
+            string lastName = "";
+            string fullName = "";
+            double monthly = 1;
+            Salary emp = new Salary(empId, firstName, lastName, fullName, monthly);
+            Form1 form1 = new Form1();
+            BusinessRules.employeeList.Clear();
+            //Act
+            BusinessRules.AddEmployee(form1, emp);
+            List<Employee> temp = BusinessRules.SearchEmployeeFirst(firstName);
             //Assert
             Assert.AreEqual(temp[0].firstName, emp.firstName);
         }
+        /// <summary>
+        /// A Red Test for testing the search by Last Name method
+        /// </summary>
         [TestMethod]
-        public void SearchLastTestMethod()
+        public void RedSearchLastTestMethod()
         {
-
             //Arrange
             string empId = "301";
             string firstName = "";
             string lastName = "Wilson";
-            //string fullName = "";
             string fullName = "";
             double monthly = 1;
             Salary emp = new Salary(empId, firstName, lastName, fullName, monthly);
             Form1 form1 = new Form1();
             BusinessRules.employeeList.Clear();
-
-
-
             //Act
             BusinessRules.AddEmployee(form1, emp);
             List<Employee> temp = BusinessRules.SearchEmployeeLast(lastName);
-
-
+            //Assert
+            Assert.AreEqual(temp[0].lastName, "Richards");
+        }
+        /// <summary>
+        /// A Green Test for testing the search by Last Name method
+        /// </summary>
+        [TestMethod]
+        public void GreenSearchLastTestMethod()
+        {
+            //Arrange
+            string empId = "301";
+            string firstName = "";
+            string lastName = "Wilson";
+            string fullName = "";
+            double monthly = 1;
+            Salary emp = new Salary(empId, firstName, lastName, fullName, monthly);
+            Form1 form1 = new Form1();
+            BusinessRules.employeeList.Clear();
+            //Act
+            BusinessRules.AddEmployee(form1, emp);
+            List<Employee> temp = BusinessRules.SearchEmployeeLast(lastName);
             //Assert
             Assert.AreEqual(temp[0].lastName, emp.lastName);
         }
+        /// <summary>
+        /// A Red Test for testing the search by Full Name method
+        /// </summary>
         [TestMethod]
-        public void SearchFullTestMethod()
+        public void RedSearchFullTestMethod()
         {
-
             //Arrange
             string empId = "301";
             string firstName = "";
             string lastName = "";
-            //string fullName = "";
             string fullName = "Richard Wilson";
             double monthly = 1;
             Salary emp = new Salary(empId, firstName, lastName, fullName, monthly);
             Form1 form1 = new Form1();
             BusinessRules.employeeList.Clear();
-
-
-
             //Act
             BusinessRules.AddEmployee(form1, emp);
             List<Employee> temp = BusinessRules.SearchEmployeeFull(fullName);
-
-
+            //Assert
+            Assert.AreEqual(temp[0].fullName, "Mr. Rogers");
+        }
+        /// <summary>
+        /// A Green Test for testing the search by Full Name method
+        /// </summary>
+        [TestMethod]
+        public void GreenSearchFullTestMethod()
+        {
+            //Arrange
+            string empId = "301";
+            string firstName = "";
+            string lastName = "";
+            string fullName = "Richard Wilson";
+            double monthly = 1;
+            Salary emp = new Salary(empId, firstName, lastName, fullName, monthly);
+            Form1 form1 = new Form1();
+            BusinessRules.employeeList.Clear();
+            //Act
+            BusinessRules.AddEmployee(form1, emp);
+            List<Employee> temp = BusinessRules.SearchEmployeeFull(fullName);
             //Assert
             Assert.AreEqual(temp[0].fullName, emp.fullName);
         }
