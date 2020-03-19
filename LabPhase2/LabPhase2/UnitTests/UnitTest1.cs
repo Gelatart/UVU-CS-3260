@@ -21,17 +21,38 @@ using System.Windows.Forms;
 
 namespace UnitTests
 {
+    ///SUMMARY!
+    
     [TestClass]
     public class UnitTest1
     {
         [TestMethod]
-        public void SalaryTestMethod()
+        public void RedSalaryTestMethod()
         {
             //Arrange
             string empId = "";
             string firstName = "";
             string lastName = "";
-            //string fullName = "";
+            string fullName = "";
+            double monthly = 1;
+            Salary emp = new Salary(empId, firstName, lastName, fullName, monthly);
+
+            //Act
+            string fullN = emp.fullName;
+
+            //Assert
+            Assert.AreEqual("Steven Bishop", fullN);
+        }
+        
+        ///SUMMARY!
+        
+        [TestMethod]
+        public void GreenSalaryTestMethod()
+        {
+            //Arrange
+            string empId = "";
+            string firstName = "";
+            string lastName = "";
             string fullName = "Steven Bishop";
             double monthly = 1;
             Salary emp = new Salary(empId, firstName, lastName, fullName, monthly);
@@ -42,15 +63,17 @@ namespace UnitTests
             //Assert
             Assert.AreEqual("Steven Bishop", fullN);
         }
+        
+        ///SUMMARY!
+        
         [TestMethod]
-        public void ContractTestMethod()
+        public void RedContractTestMethod()
         {
             //Arrange
             string empId = "";
             string firstName = "";
             string lastName = "";
-            //sstring fullName = "";
-            string fullName = "Steven Bishop";
+            string fullName = "";
             double wage = 1;
             Contract emp = new Contract(empId, firstName, lastName, fullName, wage);
 
@@ -58,7 +81,27 @@ namespace UnitTests
             string fullN = emp.fullName;
 
             //Assert
-            Assert.AreEqual("Steven Bishop", fullN);
+            Assert.AreEqual("Richard Wilson", fullN);
+        }
+        
+        ///SUMMARY!
+        
+        [TestMethod]
+        public void GreenContractTestMethod()
+        {
+            //Arrange
+            string empId = "";
+            string firstName = "";
+            string lastName = "";
+            string fullName = "Richard Wilson";
+            double wage = 1;
+            Contract emp = new Contract(empId, firstName, lastName, fullName, wage);
+
+            //Act
+            string fullN = emp.fullName;
+
+            //Assert
+            Assert.AreEqual("Richard Wilson", fullN);
         }
         [TestMethod]
         public void HourlyTestMethod()
