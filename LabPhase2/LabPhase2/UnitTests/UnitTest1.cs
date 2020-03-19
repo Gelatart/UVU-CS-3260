@@ -122,6 +122,9 @@ namespace UnitTests
             //Assert
             Assert.AreEqual("Steven Bishop", fullN);
         }
+        /// <summary>
+        /// 
+        /// </summary>
         [TestMethod]
         public void SalesTestMethod()
         {

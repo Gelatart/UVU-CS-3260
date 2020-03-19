@@ -39,6 +39,11 @@ namespace LabPhase02
                 return _instance;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 
         public Employee this [string id]
         {
@@ -51,8 +56,12 @@ namespace LabPhase02
         {
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         
-        public string findNullID() {
+        public static string findNullID() {
                 string id = "BLANK-";
                 Random random = new Random();
                 int randomNumber = random.Next(0, 1000);
@@ -133,6 +142,11 @@ namespace LabPhase02
             }
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="empId"></param>
+        /// <returns></returns>
         public static List<Employee> SearchEmployeeID(string empId)
         {
             Employee emp;
@@ -157,6 +171,11 @@ namespace LabPhase02
             return empList;
             
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <returns></returns>
         public static List<Employee> SearchEmployeeFirst(string firstName)
         {
             List<Employee> empList = new List<Employee>();
@@ -179,6 +198,11 @@ namespace LabPhase02
             return empList;
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="lastName"></param>
+        /// <returns></returns>
         public static List<Employee> SearchEmployeeLast(string lastName)
         {
             List<Employee> empList = new List<Employee>();
@@ -201,6 +225,11 @@ namespace LabPhase02
             return empList;
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fullName"></param>
+        /// <returns></returns>
         public static List<Employee> SearchEmployeeFull(string fullName)
         {
             List<Employee> empList = new List<Employee>();

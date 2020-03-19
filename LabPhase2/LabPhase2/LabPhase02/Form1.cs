@@ -435,6 +435,11 @@ namespace LabPhase02
 
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBox7_TextChanged(object sender, EventArgs e)
         {
             if(String.IsNullOrEmpty(textBox7.Text))
@@ -465,6 +470,11 @@ namespace LabPhase02
         {
 
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public ListView searchEmployees()
         {
 
@@ -499,6 +509,10 @@ namespace LabPhase02
             }
             return listView1;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="temp"></param>
         public void updateList(List<Employee> temp)
         {
             //refactored from previous duplication into its own method
