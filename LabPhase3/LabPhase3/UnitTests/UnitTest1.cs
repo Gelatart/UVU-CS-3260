@@ -1,8 +1,8 @@
 /// Project Prolog
 /// Name: Daniel Wood
 /// CS3260 Section 001
-/// Project: Lab_Phase_2
-/// Date: 3/18/2020 10:39:55 PM
+/// Project: Lab_Phase_3
+/// Date: 4/5/2020 11:48:15 PM
 /// <summary>
 /// Unit Tests to test out that all the different functions are working as intended
 /// </summary>
@@ -14,10 +14,13 @@
 /// ---------------------------------------------------------------------------
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using LabPhase02;
+using LabPhase3;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 
 namespace UnitTests
 {
@@ -442,5 +445,103 @@ namespace UnitTests
             //Assert
             Assert.AreEqual(ListView1.Items[0].ToString(),ListView2.Items[0].ToString());
         }
+        [TestMethod]
+        public void RedSerializeTestMethod()
+        {
+            //Arrange
+            Stream fs;
+            //Act
+            fs = null;
+            FileIO.Instance.fileStream = File.OpenWrite("test.txt");
+            FileIO.Instance.WriteDB();
+            //Assert
+            Assert.AreEqual(fs,FileIO.Instance.fileStream);
+            fs.Dispose();
+            FileIO.Instance.fileStream.Dispose();
+        }
+        [TestMethod]
+        public void GreenSerializeTestMethod()
+        {
+            //Arrange
+            Stream fs = File.OpenWrite("testFS.txt");
+            BinaryFormatter formatter = new BinaryFormatter();
+            //Act      
+            FileIO.Instance.fileStream = File.OpenWrite("testFIO.txt");
+            FileIO.Instance.WriteDB();
+            try
+            {
+                formatter.Serialize(fs, FileIO.Instance.EmployeeDB);
+            }
+            catch (ArgumentNullException)
+            {
+
+            }
+            fs.Dispose();
+            FileIO.Instance.fileStream.Dispose();
+            StreamReader srFS = new StreamReader("testFS.txt");
+            StreamReader srFIO = new StreamReader("testFIO.txt");
+            string lineFS = srFS.ReadLine();
+            string lineFIO = srFIO.ReadLine();
+            //Assert
+            Assert.AreEqual(lineFS,lineFIO);
+            
+        }
+        [TestMethod]
+        public void RedDeserializeTestMethod()
+        {
+            //Arrange
+            SortedDictionary<String, Employee> empDB = null;
+            FileIO.Instance.EmployeeDB = BusinessRules.employeeList;
+            //Act
+            FileIO.Instance.fileStream = File.OpenWrite("testDes.txt");
+            FileIO.Instance.WriteDB();
+            FileIO.Instance.fileStream.Dispose();
+            FileIO.Instance.fileStream = File.OpenRead("testDes.txt");
+            FileIO.Instance.ReadDB();
+            //Assert
+            Assert.AreEqual(empDB, FileIO.Instance.EmployeeDB);
+            FileIO.Instance.fileStream.Dispose();
+        }
+        [TestMethod]
+        public void GreenDeserializeTestMethod()
+        {
+            //Arrange
+            SortedDictionary<String, Employee> empDB = null;
+            FileIO.Instance.EmployeeDB = BusinessRules.employeeList;
+            BinaryFormatter formatter = new BinaryFormatter();
+            //Act
+            FileIO.Instance.fileStream = File.OpenWrite("testDeserialize.txt");
+            FileIO.Instance.WriteDB();
+            FileIO.Instance.fileStream.Dispose();
+            FileIO.Instance.fileStream = File.OpenRead("testDeserialize.txt");
+            FileIO.Instance.ReadDB();
+            FileIO.Instance.fileStream.Position = 0;
+            try
+            {
+                empDB = (SortedDictionary<string, Employee>)formatter.Deserialize(FileIO.Instance.fileStream);
+            }
+            catch (ArgumentException)
+            {
+
+            }
+            catch (SerializationException)
+            {
+
+            }
+            List<Employee> empEntries = new List<Employee>();
+            foreach( KeyValuePair<string, Employee> kvp in empDB )
+            {
+                empEntries.Add(kvp.Value);
+            }
+            List<Employee> employeeEntries = new List<Employee>();
+            foreach (KeyValuePair<string, Employee> pair in FileIO.Instance.EmployeeDB)
+            {
+                employeeEntries.Add(pair.Value);
+            }
+            //Assert
+            Assert.AreEqual(empEntries.Count,employeeEntries.Count);
+            FileIO.Instance.fileStream.Dispose();
+        }
+  
     }
 }

@@ -435,5 +435,15 @@ namespace LabPhase1
         {
 
         }
+
+        private void toolStripTextBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void openFileDialogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

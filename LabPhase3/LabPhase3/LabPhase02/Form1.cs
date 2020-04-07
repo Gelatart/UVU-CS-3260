@@ -2,7 +2,7 @@
 /// Name: Daniel Wood
 /// CS3260 Section 001
 /// Project: Lab_Phase_1
-/// Date: 3/18/2020 10:56:05 PM
+/// Date: 4/5/2020 11:52:00 PM
 /// <summary>
 /// Form where users can add employees/null references, and update existing entries
 /// </summary>
@@ -23,7 +23,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LabPhase02
+namespace LabPhase3
 {
     public partial class Form1 : Form
     {
@@ -38,6 +38,7 @@ namespace LabPhase02
                 listView1.Items.Add(worker.Value.fullName);
             }
             this.textBox7.TextChanged += new EventHandler(this.textBox7_TextChanged);
+            FileIO.Instance.EmployeeDB = BusinessRules.employeeList;
 
         }
 
@@ -529,6 +530,43 @@ namespace LabPhase02
                 {
                     listView1.Items.Add(worker.fullName);
                 }
+            }
+        }
+
+        private void openFileDialogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FileIO.Instance.OpenFileDB();
+            if(FileIO.Instance.fileOpened)
+            {
+                FileIO.Instance.ReadDB();
+                FileIO.Instance.fileStream.Dispose();
+                BusinessRules.employeeList = FileIO.Instance.EmployeeDB;
+                listView1.Clear();
+                label9.Visible = false;
+                foreach (KeyValuePair<string, Employee> worker in BusinessRules.employeeList)
+                {
+                    try
+                    {
+                        listView1.Items.Add(worker.Value.fullName);
+                    }
+                    catch (NullReferenceException)
+                    {
+                        listView1.Items.Add(BusinessRules.findNullID());
+                        continue;
+                    }
+
+                }
+            }      
+        }
+
+        private void saveFileDialogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            FileIO.Instance.SaveFileDB();
+            if(FileIO.Instance.fileSaved)
+            {
+                FileIO.Instance.WriteDB();
+                FileIO.Instance.fileStream.Dispose();
             }
         }
     }

@@ -19,7 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LabPhase02
+namespace LabPhase3
 {
     /// <summary>
     /// Sets it up as a singleton class
